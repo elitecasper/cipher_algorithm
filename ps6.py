@@ -249,7 +249,7 @@ class CiphertextMessage(Message):
         wordsList = []
         tempword = ''
         shiftNum = 0
-        shiftDict = {}
+        shiftsDict = {}
         
         for shift in range(1,27):
             shiftNum = 0
@@ -265,10 +265,10 @@ class CiphertextMessage(Message):
                     #chack if the word is valid
                 if is_word(self.valid_words, tempword):
                     shiftNum += 1
-            shiftDict[26-shift] = shiftNum
+            shiftsDict[26-shift] = shiftNum
         bestShift = 0
-        for k, v in shiftDict.items():    # for k, v in shiftDict.items()
-            if v == max(list(shiftDict.values())):
+        for k, v in shiftsDict.items():    # for k, v in shiftDict.items()
+            if v == max(list(shiftsDict.values())):
                 bestShift = k
         return (bestShift, Message.apply_shift(self,bestShift))
 
